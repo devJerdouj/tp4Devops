@@ -2,7 +2,6 @@ pipeline {
     environment {
         registry = "hjerdouj/tp4"
         registryCredential = 'dockerhub'
-        // Variable pour stocker l’image Docker construite
         dockerImage = ''
     }
     agent any
@@ -17,7 +16,6 @@ pipeline {
         stage('Building image') {
             steps {
                 script {
-                    // Construit l’image Docker à partir du Dockerfile présent dans le dépôt
                     dockerImage = docker.build("${registry}:${BUILD_NUMBER}")
                 }
             }
